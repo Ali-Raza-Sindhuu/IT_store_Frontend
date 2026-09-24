@@ -68,7 +68,7 @@ const Orders = () => {
           eyebrow="Account"
           breadcrumbs={[{ label: "My orders" }]}
           title="My Orders"
-          subtitle="Track and review everything you've ordered from ZeeScents."
+          subtitle="Track and review everything you've ordered from IT Store."
         />
 
         {loading ? (

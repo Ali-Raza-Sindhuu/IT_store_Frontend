@@ -22,12 +22,12 @@ const ProductSection = () => {
   }, [products, content]);
 
   return (
-    <section className="page-section bg-[#f8f8f8]">
+    <section className="page-section bg-[#f5f8fc]">
       <div className="page-inner flex flex-col gap-8 sm:gap-10">
         <SectionHeader
-          badge={content.badge || "New Arrivals"}
+          badge={content.badge || "Fresh technology"}
           icon={<LuSparkles size={13} />}
-          heading={content.heading || "New scents in our latest drop"}
+          heading={content.heading || "Explore the latest in everyday tech"}
           subtext={content.subtext}
           ctaLabel={content.ctaLabel || "Shop Now"}
           ctaLink={content.ctaLink || "/shops"}

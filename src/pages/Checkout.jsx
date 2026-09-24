@@ -13,7 +13,7 @@ import useJazzCashPayment from "../components/checkout/useJazzCashPayment";
 import OrderReviewModal from "../components/checkout/OrderReviewModal";
 import JazzCashMpinDialog from "../components/checkout/JazzCashMpinDialog";
 import JazzCashLogo from "../components/checkout/JazzCashLogo";
-import logo from "../assets/Logo.png";
+import logo from "../assets/it-store-logo.svg";
 import { Label, SectionTitle, SYSTEM_FONT, inputGrouped, inputSingle } from "../components/ui/formStyles";
 
 const METHOD_META = {
@@ -301,17 +301,17 @@ const Checkout = () => {
             >
               <ArrowLeft size={18} />
             </Link>
-            <Link to="/" aria-label="ZeeScents home" className="relative h-9 w-[96px] shrink-0 overflow-hidden">
+            <Link to="/" aria-label="IT Store home" className="relative h-9 w-[116px] shrink-0 overflow-hidden">
               <img
                 src={logo}
-                alt="ZeeScents"
-                className="absolute left-1/2 top-1/2 w-[100px] max-w-none -translate-x-1/2 -translate-y-[52%] invert"
+                alt="IT Store"
+                className="absolute left-1/2 top-1/2 w-[116px] max-w-none -translate-x-1/2 -translate-y-1/2"
               />
             </Link>
           </div>
 
           <div className="mt-6 lg:mt-10">
-            <p className="text-[15px] font-medium text-[#6b6b73]">Pay ZeeScents</p>
+            <p className="text-[15px] font-medium text-[#6b6b73]">Pay IT Store</p>
             <p className="mt-1 text-[36px] font-semibold leading-tight tracking-tight tabular-nums">
               {formatPrice(view.total)}
             </p>

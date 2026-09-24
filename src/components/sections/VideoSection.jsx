@@ -59,7 +59,7 @@ const VideoSection = () => {
         <div className="inline-flex max-w-full flex-wrap items-center gap-1 rounded-full border border-white/15 bg-white/10 px-1 py-1 backdrop-blur-md">
           <div className="rounded-full bg-white px-3 py-1">
             <span className="font-display text-xs font-medium tracking-tight text-black">
-              ZeeScents
+              IT Store
             </span>
           </div>
 

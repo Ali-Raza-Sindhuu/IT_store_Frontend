@@ -218,7 +218,7 @@ const ReturnStatus = () => {
 
         {lastCustomerMessage && !["completed", "rejected"].includes(ret.status) && (
           <div className="mt-4 rounded-md bg-[#fdf6e7] px-4 py-3 text-[13.5px] text-[#5c4515]">
-            <p className="text-[12px] font-semibold uppercase tracking-wide">Message from ZeeScents</p>
+            <p className="text-[12px] font-semibold uppercase tracking-wide">Message from IT Store</p>
             <p className="mt-1">{lastCustomerMessage.message}</p>
           </div>
         )}

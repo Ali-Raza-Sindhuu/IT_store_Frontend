@@ -55,13 +55,13 @@ const AboutSection = () => {
             </div>
 
             <span className="font-mono text-xs tracking-wide text-black">
-              About ZeeScents
+              About IT Store
             </span>
           </div>
 
           <p className="max-w-3xl font-display text-[clamp(1.75rem,3.2vw,2.75rem)] font-medium leading-[1.15] tracking-tight text-black">
-            More than perfume — a commitment to memorable compositions,
-            thoughtful ingredients and your personal scent journey.
+            More than products — a commitment to dependable technology,
+            clear choices and support that stays useful after checkout.
           </p>
         </motion.div>
 
@@ -83,7 +83,7 @@ const AboutSection = () => {
             >
               <FramedImage
                 src={resolveImg(card.image)}
-                alt={card.label || "ZeeScents"}
+                alt={card.label || "IT Store"}
                 className="absolute inset-0 transition-transform duration-700 hover:scale-105"
               />
 

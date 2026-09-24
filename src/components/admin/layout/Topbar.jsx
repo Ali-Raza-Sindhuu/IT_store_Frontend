@@ -19,7 +19,7 @@ export const Topbar = ({ user, onOpenDrawer, onLogout, isDarkMode, onToggleTheme
   }, []);
 
   return (
-    <header className="sticky top-0 z-30 flex items-center justify-between border-b border-zs-beigeLine bg-white/90 px-4 py-3.5 backdrop-blur sm:px-6">
+    <header className="sticky top-0 z-30 flex items-center justify-between border-b border-zs-beigeLine bg-white/90 px-4 py-3.5 shadow-[0_8px_24px_-20px_rgba(24,70,110,.35)] backdrop-blur sm:px-6">
       <button
         type="button"
         aria-label="Open menu"

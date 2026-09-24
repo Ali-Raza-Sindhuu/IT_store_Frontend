@@ -11,7 +11,7 @@ import { Badge } from "./ui/badge";
 // Round action buttons on the card image. Always visible on touch screens;
 // revealed on hover/focus where a fine pointer exists.
 const actionClass =
-  "grid h-10 w-10 place-items-center rounded-full bg-white text-black shadow-sm transition duration-200 hover:bg-black hover:text-white active:scale-95 " +
+  "grid h-10 w-10 place-items-center rounded-full bg-white text-[#087cc4] shadow-sm transition duration-200 hover:bg-[#087cc4] hover:text-white active:scale-95 " +
   "pointer-fine:translate-x-2 pointer-fine:opacity-0 pointer-fine:group-hover:translate-x-0 pointer-fine:group-hover:opacity-100 pointer-fine:group-focus-within:translate-x-0 pointer-fine:group-focus-within:opacity-100";
 
 const SampleProduct = (product) => {
@@ -27,8 +27,8 @@ const SampleProduct = (product) => {
   const { original, final, hasDiscount, percent } = getDiscountInfo(product);
 
   return (
-    <article className="group flex w-full flex-col gap-3">
-      <div className="relative aspect-square overflow-hidden rounded-2xl bg-[#ededed]">
+    <article className="group flex w-full flex-col gap-3 rounded-[1.25rem] border border-[#dce7f2] bg-white p-3 shadow-[0_14px_35px_-24px_rgba(24,70,110,.35)] transition duration-300 hover:-translate-y-1 hover:shadow-lg">
+      <div className="relative aspect-square overflow-hidden rounded-[.9rem] bg-[#eef7fc]">
         <Link to={href} tabIndex={-1} aria-hidden="true" className="absolute inset-0">
           {cover && (
             <FramedImage
@@ -79,8 +79,8 @@ const SampleProduct = (product) => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-1 px-1">
-        <Link to={href} className="line-clamp-2 text-[15px] font-medium leading-snug text-black decoration-black/30 underline-offset-4 hover:underline sm:text-base">
+      <div className="flex flex-col gap-1 px-1 pb-1">
+        <Link to={href} className="line-clamp-2 text-[15px] font-semibold leading-snug text-[#14213d] decoration-[#087cc4]/30 underline-offset-4 hover:underline sm:text-base">
           {name}
         </Link>
         {hasDiscount ? (

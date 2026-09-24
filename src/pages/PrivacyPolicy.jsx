@@ -35,7 +35,7 @@ const PrivacyPolicy = () => {
           eyebrow="Legal"
           breadcrumbs={[{ label: "Privacy policy" }]}
           title="Privacy Policy"
-          subtitle="Last updated September 2026 — how ZeeScents collects, uses, and protects your information."
+          subtitle="Last updated September 2026 — how IT Store collects, uses, and protects your information."
         />
 
         <div className="flex flex-col gap-10">

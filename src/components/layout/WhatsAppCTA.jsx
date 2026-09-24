@@ -6,7 +6,7 @@ const DEFAULTS = {
   enabled: true,
   number: "",
   label: "Chat with us",
-  message: "Hello! I have a question about ZeeScents.",
+  message: "Hello! I have a question about IT Store.",
 };
 
 const WhatsAppCTA = () => {

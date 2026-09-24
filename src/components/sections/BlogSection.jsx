@@ -10,7 +10,7 @@ const BlogSection = () => {
     <section className="page-section flex w-full flex-col gap-10 bg-[#f8f8f8]">
       <div className="page-inner flex flex-col gap-10">
       <SectionHeader
-  badge="ZeeScents Journal"
+  badge="IT Store Journal"
   icon={<Handshake size={13} />}
   heading="Explore your fragrance journey"
   ctaLabel="Read all blogs"

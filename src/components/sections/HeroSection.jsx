@@ -73,7 +73,7 @@ const HeroSection = ({
   return (
     <section
       ref={sectionRef}
-      className="relative -mt-16 flex w-full flex-col overflow-hidden bg-[#050505] md:-mt-20 md:h-[100dvh] md:flex-row"
+      className="relative -mt-16 flex w-full flex-col overflow-hidden bg-[#eaf6fd] md:-mt-20 md:h-[min(760px,82dvh)] md:flex-row"
     >
       {/* Phones: the image at its own shape — full width, natural height,
           never cropped and never padded — with the text below it. A wide
@@ -120,19 +120,19 @@ const HeroSection = ({
       <div
         className="absolute inset-0 z-[1] hidden md:block"
         style={{
-          background: `linear-gradient(to right, rgba(5,5,5,${overlay / 100}) 0%, rgba(5,5,5,${Math.max(overlay - 25, 0) / 100}) 45%, rgba(5,5,5,0.1) 70%, transparent 100%)`,
+          background: `linear-gradient(90deg, rgba(6,38,83,${Math.min(overlay / 100, .84)}) 0%, rgba(8,124,196,${Math.max(overlay - 30, 0) / 100}) 48%, rgba(3,23,58,.08) 78%, transparent 100%)`,
         }}
       />
       <div
         className="absolute inset-0 z-[1] hidden md:block"
         style={{
-          background: "linear-gradient(to top, rgba(5,5,5,0.7) 0%, transparent 40%)",
+          background: "linear-gradient(to top, rgba(2,34,76,.55) 0%, transparent 40%)",
         }}
       />
       <div
         className="absolute bottom-0 left-0 right-0 z-[1] hidden h-32 md:block"
         style={{
-          background: "linear-gradient(to top, rgba(5,5,5,0.8) 0%, transparent 100%)",
+          background: "linear-gradient(to top, rgba(2,34,76,.7) 0%, transparent 100%)",
         }}
       />
 

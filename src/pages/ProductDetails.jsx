@@ -298,8 +298,8 @@ const ProductDetails = ({ breadcrumbBase = "/shops" }) => {
   }, [dispatch, slug]);
 
   useEffect(() => {
-    if (product?.name) document.title = `${product.name} | ZeeScents`;
-    return () => { document.title = "ZeeScents | Fine Fragrance"; };
+    if (product?.name) document.title = `${product.name} | IT Store`;
+    return () => { document.title = "IT Store | Technology made simple"; };
   }, [product?.name]);
 
   // `currentProduct` still holds the previous product while the next one

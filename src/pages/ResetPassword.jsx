@@ -50,7 +50,7 @@ const ResetPassword = () => {
       <div className="w-full max-w-md rounded-3xl bg-white p-8 shadow-2xl">
         <div className="mb-6 text-center">
           <h1 className="font-display text-2xl font-medium text-gray-900">Reset your password</h1>
-          <p className="mt-1 text-sm text-gray-500">Choose a new password for your ZeeScents account.</p>
+          <p className="mt-1 text-sm text-gray-500">Choose a new password for your IT Store account.</p>
         </div>
 
         {success ? (

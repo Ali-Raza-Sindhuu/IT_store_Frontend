@@ -17,15 +17,13 @@ import { BsFacebook, BsInstagram, BsTiktok, BsTwitter, BsYoutube } from "react-i
 import { getCmsSection } from "../../utils/cms";
 import { formatPrice } from "../../utils/price";
 import { useShipping } from "../../utils/shipping";
-// Case matters: the file is Logo.png. Windows forgives "logo.png"; the Linux
-// server (and its build) does not.
-import logo from "../../assets/Logo.png";
+import logo from "../../assets/it-store-logo.svg";
 
 const NAV_LINKS = [
   { name: "HOME", path: "/" },
+  { name: "CATALOG", path: "/shops" },
   { name: "ABOUT", path: "/about" },
-  { name: "SHOP", path: "/shops" },
-  { name: "CONTACT", path: "/contact" },
+  { name: "SUPPORT", path: "/contact" },
 ];
 
 const SOCIAL_ICONS = { instagram: BsInstagram, facebook: BsFacebook, twitter: BsTwitter, x: BsTwitter, tiktok: BsTiktok, youtube: BsYoutube };
@@ -116,30 +114,30 @@ const navbarSolid = isWhiteNavbar || isScrolled || isMobileMenuOpen;
     }
     return `cursor-pointer rounded-full p-2 transition-colors duration-200 ${
       navbarSolid
-        ? "bg-black text-white hover:bg-black/80"
-        : "bg-white text-black hover:bg-white/90"
+      ? "bg-[#087cc4] text-white hover:bg-[#056aaa]"
+        : "bg-white text-[#087cc4] hover:bg-white/90"
     }`;
   };
 
   return (
     <>
       <nav
-  className={`page-x fixed top-0 left-0 z-50 w-full py-4 transition-all duration-300 md:py-5 ${
+  className={`page-x fixed top-0 left-0 z-50 w-full border-b py-3 transition-all duration-300 md:py-4 ${
     navbarSolid
-      ? "bg-[#f8f8f8] text-black shadow-sm backdrop-blur-xl"
-      : "bg-transparent"
+      ? "border-[#dce7f2] bg-white/95 text-[#14213d] shadow-sm backdrop-blur-xl"
+      : "border-transparent bg-white/80 text-[#14213d] backdrop-blur-xl"
   }`}
 >
         <div className="page-inner flex items-center justify-between">
           <Link
             to="/"
-            aria-label="ZeeScents home"
+            aria-label="IT Store home"
             className="relative h-11 w-[116px] shrink-0 overflow-hidden"
           >
             <img
               src={logo}
-              alt="ZeeScents"
-              className={`absolute left-1/2 top-1/2 w-[122px] max-w-none -translate-x-1/2 -translate-y-[52%] transition ${navbarSolid ? "invert" : ""}`}
+              alt="IT Store"
+              className="absolute left-1/2 top-1/2 w-[122px] max-w-none -translate-x-1/2 -translate-y-1/2 transition"
             />
           </Link>
 
@@ -153,8 +151,8 @@ const navbarSolid = isWhiteNavbar || isScrolled || isMobileMenuOpen;
                   aria-current={isActive ? "page" : undefined}
                   className={`relative px-4 py-2 font-mono text-[13px] uppercase tracking-[0.06em] no-underline transition-colors duration-200 after:absolute after:bottom-1 after:left-4 after:right-4 after:h-px after:origin-left after:bg-[#c9a96e] after:transition-transform after:duration-200 after:content-[''] ${
   isActive
-    ? `after:scale-x-100 ${navbarSolid ? "text-black" : "text-white"}`
-    : `after:scale-x-0 ${navbarSolid ? "text-black/70 hover:text-black" : "text-white/80 hover:text-white"} hover:after:scale-x-100`
+    ? "after:scale-x-100 text-[#087cc4]"
+    : "after:scale-x-0 text-[#475569] hover:text-[#087cc4] hover:after:scale-x-100"
 }`}
                 >
                   {link.name}
@@ -208,9 +206,7 @@ const navbarSolid = isWhiteNavbar || isScrolled || isMobileMenuOpen;
             <button
               onClick={() => setIsMobileMenuOpen((prev) => !prev)}
               className={`ml-1 cursor-pointer rounded-full p-2 transition-colors duration-200 lg:hidden ${
-                navbarSolid
-                  ? "bg-black/10 text-black hover:bg-black/15"
-                  : "bg-black/20 text-white hover:bg-black/30"
+                "bg-[#eaf5fb] text-[#087cc4] hover:bg-[#d9eef9]"
               }`}
               aria-label="Toggle menu"
               aria-expanded={isMobileMenuOpen}
@@ -242,13 +238,13 @@ const navbarSolid = isWhiteNavbar || isScrolled || isMobileMenuOpen;
             <Link
               to="/"
               onClick={closeMobileMenu}
-              aria-label="ZeeScents home"
+              aria-label="IT Store home"
               className="relative h-10 w-[108px] shrink-0 overflow-hidden"
             >
               <img
                 src={logo}
-                alt="ZeeScents"
-                className="absolute left-1/2 top-1/2 w-[114px] max-w-none -translate-x-1/2 -translate-y-[52%] invert"
+                alt="IT Store"
+                className="absolute left-1/2 top-1/2 w-[114px] max-w-none -translate-x-1/2 -translate-y-1/2"
               />
             </Link>
 
@@ -304,17 +300,17 @@ const navbarSolid = isWhiteNavbar || isScrolled || isMobileMenuOpen;
 
             <div className="mt-8 rounded-3xl bg-black px-5 py-5 text-white">
               <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-white/50">
-                Signature scents
+                Smarter tech
               </p>
               <p className="mt-3 text-[15px] leading-6 text-white/90">
-                Long-lasting fragrances, oud and attars, made to become part of your everyday.
+                Everyday electronics, dependable accessories and thoughtful service in one place.
               </p>
               <Link
                 to="/shops"
                 onClick={closeMobileMenu}
                 className="mt-4 inline-flex rounded-full bg-white px-5 py-2.5 text-sm font-medium text-black transition hover:bg-white/90"
               >
-                Shop all fragrances
+                Browse catalog
               </Link>
 
               {socials.length > 0 && (

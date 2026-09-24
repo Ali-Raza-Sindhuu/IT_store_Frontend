@@ -9,6 +9,8 @@ import FramedImage from "../components/ui/FramedImage";
 import HoverAccordion from "../components/ui/HoverAccordion";
 import { submitContactRequest } from "../api/contactApi";
 
+const fallbackContactImage = "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=85";
+
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
@@ -28,7 +30,7 @@ const Contact = () => {
   const FAQS = (faqsContent?.faqs || []).map((f) => ({ q: f.question, a: f.answer }));
 
   const INFO = [
-    { icon: <Mail size={18} strokeWidth={1.5} />, label: "Email Us", value: storeInfo.supportEmail || info.email || "hello@zeescents.com", sub: info.emailSub || "We reply within 24 hours" },
+    { icon: <Mail size={18} strokeWidth={1.5} />, label: "Email Us", value: storeInfo.supportEmail || info.email || "support@itstore.pk", sub: info.emailSub || "We reply within 24 hours" },
     { icon: <Phone size={18} strokeWidth={1.5} />, label: "Call Us", value: storeInfo.phone || info.phone || "+92 300 000 0000", sub: info.phoneSub || "Mon–Fri, 9am to 6pm" },
     { icon: <MapPin size={18} strokeWidth={1.5} />, label: "Visit Us", value: storeInfo.address || info.address || "Lahore, Pakistan", sub: info.addressSub || "By appointment only" },
   ];
@@ -70,22 +72,22 @@ const Contact = () => {
           <div className="mb-10 flex flex-col items-start justify-between gap-4 lg:mb-14 lg:flex-row lg:items-end">
             <div>
               <span className="font-mono text-[10px] tracking-[0.25em] uppercase text-[#c9a96e] sm:text-[11px]">
-                ZeeScents — Get in touch
+                IT Store — Get in touch
               </span>
               <h2 className="mt-3 font-display text-pretty text-[clamp(2rem,4vw,3.75rem)] font-medium leading-[1.08] tracking-tight text-black">
                 Let's start a conversation
               </h2>
             </div>
             <p className="max-w-xs pb-1 text-sm leading-relaxed text-black/50">
-              Questions about an order, a fragrance, or a future collection — our team replies within a day.
+              Questions about an order, a device or finding the right accessory? Our team replies within a day.
             </p>
           </div>
 
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-10">
             <div className="relative min-h-[420px] overflow-hidden rounded-[24px] sm:min-h-[520px] lg:min-h-[640px]">
               <FramedImage
-                src={resolveImg(info.image)}
-                alt={info.imageAlt || "Get in touch with ZeeScents"}
+                src={resolveImg(info.image) || fallbackContactImage}
+                alt={info.imageAlt || "Get in touch with IT Store"}
 
                 className="absolute inset-0"
               />
@@ -96,7 +98,7 @@ const Contact = () => {
                 <div className="mt-0 flex items-center gap-2 rounded-sm border border-black/10 bg-[#f8f8f8] px-3 py-2 shadow-md sm:px-4">
                   <span className="h-2 w-2 rounded-full border border-black/40" />
                   <span className="font-mono text-[9px] tracking-[0.2em] uppercase text-black/70 sm:text-[10px]">
-                    ZEESCENTS · Lahore, PK
+                    IT STORE · Lahore, PK
                   </span>
                 </div>
               </div>

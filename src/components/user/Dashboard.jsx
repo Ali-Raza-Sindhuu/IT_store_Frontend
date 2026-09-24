@@ -68,17 +68,17 @@ const Dashboard = () => {
   }, [dispatch]);
 
   return (
-    <main className="min-h-screen bg-[#f7f7f5] px-5 py-24 sm:px-8 lg:px-14">
+    <main className="min-h-screen bg-[#f5f8fc] px-5 py-24 sm:px-8 lg:px-14">
       <div className="mx-auto max-w-6xl">
-        <header className="flex flex-col justify-between gap-5 border-b border-black/10 pb-7 sm:flex-row sm:items-end">
+        <header className="flex flex-col justify-between gap-5 rounded-[1.5rem] border border-[#dce7f2] bg-[linear-gradient(120deg,#fff_35%,#e5f5fc)] p-6 shadow-[0_14px_35px_-24px_rgba(24,70,110,.35)] sm:flex-row sm:items-end sm:p-8">
           <div>
             <Breadcrumbs items={[{ label: "My account" }]} className="mb-4" />
-            <h1 className="mt-1 text-3xl font-semibold">Welcome, {name}</h1>
-            <p className="mt-2 text-sm text-black/55">Manage your orders, addresses, saved scents and account security.</p>
+            <h1 className="mt-1 text-3xl font-semibold text-[#14213d]">Welcome back, {name}</h1>
+            <p className="mt-2 text-sm text-[#64748b]">Manage your orders, addresses, saved products and account security.</p>
           </div>
           <div className="flex items-center gap-3">
-            <Link to="/shops" className="rounded-xl bg-black px-5 py-3 text-center text-sm font-medium text-white transition hover:bg-black/85">
-              Shop fragrances
+            <Link to="/shops" className="rounded-xl bg-[#087cc4] px-5 py-3 text-center text-sm font-medium text-white transition hover:bg-[#056aaa]">
+              Browse catalog
             </Link>
             <button
               onClick={() => dispatch(logout())}
@@ -91,11 +91,11 @@ const Dashboard = () => {
 
         <section className="mt-7 grid gap-4 sm:grid-cols-3">
           <Stat icon={<Package size={18} />} label="Orders" value={orders.length} />
-          <Stat icon={<Heart size={18} />} label="Saved fragrances" value={savedProducts.length} />
+          <Stat icon={<Heart size={18} />} label="Saved products" value={savedProducts.length} />
           <Stat icon={<MapPin size={18} />} label="Addresses" value={addresses.length} />
         </section>
 
-        <div className="mt-7 flex gap-2 overflow-x-auto rounded-2xl bg-white p-1.5">
+        <div className="mt-7 flex gap-2 overflow-x-auto rounded-2xl border border-[#dce7f2] bg-white p-1.5 shadow-sm">
           {TABS.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -104,7 +104,7 @@ const Dashboard = () => {
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2 whitespace-nowrap rounded-xl px-4 py-2.5 text-sm font-medium transition-colors ${
-                  isActive ? "bg-black text-white" : "text-black/55 hover:bg-black/5 hover:text-black"
+                  isActive ? "bg-[#087cc4] text-white shadow-sm" : "text-black/55 hover:bg-[#eef7fc] hover:text-[#087cc4]"
                 }`}
               >
                 <Icon size={15} /> {tab.label}
@@ -189,7 +189,7 @@ const OverviewTab = ({ orders, savedProducts, user }) => {
         )}
 
         <div className="mt-7 flex items-center justify-between border-t border-black/8 pt-6">
-          <h2 className="text-xl font-semibold">Saved fragrances</h2>
+          <h2 className="text-xl font-semibold">Saved products</h2>
           <Link to="/wishlist" className="text-sm underline">View wishlist</Link>
         </div>
         {savedProducts.length ? (
@@ -564,10 +564,10 @@ const SecurityTab = ({ user }) => {
 /* ------------------------------ Shared bits ----------------------------- */
 
 const Stat = ({ icon, label, value }) => (
-  <div className="rounded-2xl bg-white p-5">
-    <div className="text-black/45">{icon}</div>
-    <p className="mt-4 text-2xl font-semibold">{value}</p>
-    <p className="mt-1 text-sm text-black/50">{label}</p>
+  <div className="rounded-2xl border border-[#dce7f2] bg-white p-5 shadow-sm">
+    <div className="text-[#087cc4]">{icon}</div>
+    <p className="mt-4 text-2xl font-semibold text-[#14213d]">{value}</p>
+    <p className="mt-1 text-sm text-[#64748b]">{label}</p>
   </div>
 );
 

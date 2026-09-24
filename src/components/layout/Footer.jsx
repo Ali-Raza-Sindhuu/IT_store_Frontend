@@ -15,7 +15,7 @@ import { useSelector } from "react-redux";
 import { subscribeNewsletterRequest } from "../../api/newsletterApi";
 import { getCmsSection } from "../../utils/cms";
 import { resolveImg } from "../../utils/resolveImg";
-import logo from "../../assets/Logo.png";
+import logo from "../../assets/it-store-logo.svg";
 
 const shopLinks = [
   { name: "Shop All", path: "/shops" },
@@ -68,10 +68,10 @@ const SOCIAL_ICONS = {
 };
 
 const DEFAULT_SOCIALS = [
-  { platform: "Instagram", url: "https://instagram.com/zeescents" },
-  { platform: "Twitter", url: "https://twitter.com/zeescents" },
-  { platform: "Facebook", url: "https://facebook.com/zeescents" },
-  { platform: "YouTube", url: "https://youtube.com/@zeescents" },
+  { platform: "Instagram", url: "" },
+  { platform: "Twitter", url: "" },
+  { platform: "Facebook", url: "" },
+  { platform: "YouTube", url: "" },
 ];
 
 const FooterLinkList = ({ title, links }) => (
@@ -114,7 +114,7 @@ const Footer = () => {
   const socials = Array.isArray(socialsContent?.socials)
     ? socialsContent.socials.slice(0, 4)
     : DEFAULT_SOCIALS;
-  const brandName = storeInfo?.name || "ZeeScents";
+  const brandName = storeInfo?.name || "IT Store";
   const brandLogo = brand.logo_image ? resolveImg(brand.logo_image) : logo;
   const editableTrustPoints = Array.isArray(trustBar.trustPoints) && trustBar.trustPoints.length
     ? trustBar.trustPoints.map((point, index) => ({
@@ -144,7 +144,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-black text-white">
+    <footer className="bg-[#081526] text-white">
       {/* Trust bar — quick reassurance strip, sits right above the footer content */}
       <div className="page-x border-b border-white/10 py-6">
         <div className="page-inner flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-x-12 sm:gap-y-3">
@@ -172,7 +172,7 @@ const Footer = () => {
                 </div>
                 <p className="max-w-sm text-sm leading-relaxed text-white/50">
                   {brand.tagline ||
-                    "Long-lasting fragrances, oud and attars — crafted to become part of your signature."}
+                    "Reliable technology, clear prices and helpful support for every setup."}
                 </p>
               </div>
 

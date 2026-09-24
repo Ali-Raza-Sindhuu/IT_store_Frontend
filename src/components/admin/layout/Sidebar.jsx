@@ -13,11 +13,11 @@ export const DesktopSidebar = ({ collapsed, onToggle }) => (
     }
   >
     <div className={"flex items-center gap-2.5 px-5 py-6 " + (collapsed ? "justify-center" : "")}>
-      <img src={LOGO_SRC} alt="ZeeScents logo" className="h-9 w-9 shrink-0 rounded-xl object-contain invert" />
+      <img src={LOGO_SRC} alt="IT Store logo" className="h-9 w-9 shrink-0 rounded-xl object-contain invert" />
       {!collapsed && (
         <div className="leading-tight">
-          <p className="zs-display text-[15px] font-bold text-zs-charcoal">ZeeScents</p>
-          <p className="text-[11px] text-zs-charcoal/45">Admin workspace</p>
+          <p className="zs-display text-[15px] font-bold text-zs-charcoal">IT Store</p>
+          <p className="text-[11px] text-zs-charcoal/45">Control center</p>
         </div>
       )}
     </div>
@@ -43,10 +43,10 @@ export const MobileDrawer = ({ open, onClose }) => {
       <div className="relative flex h-full w-72 max-w-[80%] flex-col bg-white shadow-xl">
         <div className="flex items-center justify-between border-b border-zs-beigeLine px-5 py-6">
           <div className="flex items-center gap-2.5">
-            <img src={LOGO_SRC} alt="ZeeScents logo" className="h-9 w-9 shrink-0 rounded-xl object-contain invert" />
+            <img src={LOGO_SRC} alt="IT Store logo" className="h-9 w-9 shrink-0 rounded-xl object-contain invert" />
             <div className="leading-tight">
-              <p className="zs-display text-[15px] font-bold text-zs-charcoal">ZeeScents</p>
-              <p className="text-[11px] text-zs-charcoal/45">Admin workspace</p>
+              <p className="zs-display text-[15px] font-bold text-zs-charcoal">IT Store</p>
+              <p className="text-[11px] text-zs-charcoal/45">Control center</p>
             </div>
           </div>
           <button

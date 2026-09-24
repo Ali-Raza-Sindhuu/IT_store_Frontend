@@ -6,7 +6,7 @@ import { apiBaseUrl } from "../../api/apiClient";
 import { Button } from "./components/ui/Button";
 import { FormField, TextInput } from "./components/ui/FormField";
 import { isAdminSignedIn, setAdminSession } from "./auth/adminSession";
-import logo from "../../assets/Logo.png";
+import logo from "../../assets/it-store-logo.svg";
 import "./admin-theme.css";
 
 // Only paths inside the admin panel may be returned to after sign-in.
@@ -46,9 +46,9 @@ export const AdminLogin = () => {
     <div className="zs-root flex min-h-screen items-center justify-center bg-zs-page px-4 py-10 font-body">
       <div className="w-full max-w-sm">
         <div className="mb-6 flex flex-col items-center text-center">
-          <img src={logo} alt="ZeeScents" className="h-12 w-12 rounded-xl object-contain invert" />
+          <img src={logo} alt="IT Store" className="h-12 w-44 object-contain" />
           <h1 className="zs-display mt-4 text-2xl font-semibold text-zs-charcoal">Admin sign in</h1>
-          <p className="mt-1 text-sm text-zs-charcoal/55">ZeeScents store management</p>
+          <p className="mt-1 text-sm text-zs-charcoal/55">IT Store management</p>
         </div>
 
         <form onSubmit={submit} className="rounded-3xl border border-zs-beigeLine bg-white p-6 shadow-sm">

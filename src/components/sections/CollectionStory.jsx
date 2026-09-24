@@ -18,12 +18,12 @@ const CollectionStory = () => {
           <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl h-[240px] sm:h-[320px] md:h-[400px] lg:h-[480px] xl:h-[540px]">
             <img
               src="https://images.unsplash.com/photo-1563170351-be82bc888aa4?auto=format&fit=crop&w=1400&q=85"
-              alt="ZeeScents fragrance story"
+              alt="IT Store technology story"
               className="h-full w-full object-cover object-top"
             />
             <div className="absolute bottom-3 left-3 rounded-2xl border border-white/20 bg-white/15 px-3 py-2 backdrop-blur-md sm:bottom-4 sm:left-4 sm:px-4 sm:py-3">
               <span className="block font-mono text-[10px] tracking-widest text-white uppercase sm:text-xs">
-                ZeeScents
+                IT Store
               </span>
               <span className="block text-[10px] text-white/70 sm:text-xs">
                 Fine fragrance

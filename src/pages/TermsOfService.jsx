@@ -3,7 +3,7 @@ import PageHeader from "../components/layout/PageHeader";
 const SECTIONS = [
   {
     heading: "Acceptance of terms",
-    body: "By accessing or using the ZeeScents website, placing an order, or creating an account, you agree to be bound by these Terms of Service. If you do not agree, please do not use the site.",
+    body: "By accessing or using the IT Store website, placing an order, or creating an account, you agree to be bound by these Terms of Service. If you do not agree, please do not use the site.",
   },
   {
     heading: "Orders and payment",
@@ -23,11 +23,11 @@ const SECTIONS = [
   },
   {
     heading: "Intellectual property",
-    body: "All content on this site — including product photography, branding, and text — is the property of ZeeScents and may not be reproduced without permission.",
+    body: "All content on this site — including product photography, branding, and text — is the property of IT Store and may not be reproduced without permission.",
   },
   {
     heading: "Limitation of liability",
-    body: "ZeeScents is not liable for indirect, incidental, or consequential damages arising from use of the site or products, to the fullest extent permitted by law.",
+    body: "IT Store is not liable for indirect, incidental, or consequential damages arising from use of the site or products, to the fullest extent permitted by law.",
   },
   {
     heading: "Changes to these terms",
@@ -43,7 +43,7 @@ const TermsOfService = () => {
           eyebrow="Legal"
           breadcrumbs={[{ label: "Terms of service" }]}
           title="Terms of Service"
-          subtitle="Last updated September 2026 — the terms governing your use of ZeeScents."
+          subtitle="Last updated September 2026 — the terms governing your use of IT Store."
         />
 
         <div className="flex flex-col gap-10">

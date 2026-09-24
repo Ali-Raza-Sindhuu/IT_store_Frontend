@@ -62,7 +62,7 @@ export const Overview = () => {
     <div>
       <PageHeader
         title="Sales overview"
-        description="A snapshot of ZeeScents' performance across orders, catalog and customers."
+        description="A snapshot of IT Store's performance across orders, catalog and customers."
         actions={
           <>
             <Button variant="secondary" icon={Plus} onClick={() => navigate(adminPath("products"))}>Add product</Button>

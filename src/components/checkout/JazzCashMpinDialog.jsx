@@ -72,7 +72,7 @@ const JazzCashMpinDialog = ({ mobile, amount, orderId, onApprove, onCancel }) =>
         </div>
 
         <div className="border-b border-[#ececef] bg-[#fff9ea] px-5 py-4 text-center">
-          <p className="text-[12.5px] text-[#6b6b73]">ZeeScents · Order #{orderId}</p>
+          <p className="text-[12.5px] text-[#6b6b73]">IT Store · Order #{orderId}</p>
           <p className="mt-1 text-[30px] font-semibold leading-tight tracking-tight tabular-nums text-[#1a1a1a]">
             {formatPrice(amount)}
           </p>

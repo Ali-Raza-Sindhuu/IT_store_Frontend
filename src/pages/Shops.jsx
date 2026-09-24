@@ -11,7 +11,7 @@ import { useShipping } from "../utils/shipping";
 import apiClient from "../api/apiClient";
 
 const ALL_PRODUCTS_LABEL = "All Products";
-const fallbackHeroImage = "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=2200&q=90";
+const fallbackHeroImage = "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=2200&q=90";
 
 const SORTS = {
   featured: { label: "Featured", compare: null },
@@ -89,7 +89,7 @@ const Shops = () => {
       desc: shipping.hasThreshold ? `On orders over ${formatPrice(shipping.threshold)}` : "Delivered to your door",
     },
     { icon: <RotateCcw size={22} strokeWidth={1.5} />, title: "Easy returns", desc: "30-day hassle-free returns" },
-    { icon: <Leaf size={22} strokeWidth={1.5} />, title: "Quality oils", desc: "Carefully sourced ingredients" },
+    { icon: <Leaf size={22} strokeWidth={1.5} />, title: "Quality checked", desc: "Inspected before dispatch" },
     { icon: <ShieldCheck size={22} strokeWidth={1.5} />, title: "Secure checkout", desc: "SSL encrypted payments" },
   ];
 
@@ -101,9 +101,9 @@ const Shops = () => {
         image={heroImage}
         imagePosition="center center"
         mobileImagePosition="90% 20%"
-        badge={{ label: header.badgeLabel || "Shop", text: header.badgeText || "Curated for you" }}
-        heading={header.title || "Find your signature scent"}
-        subtext={header.subtitle || "Browse our latest fragrances and timeless favourites"}
+        badge={{ label: header.badgeLabel || "IT Store", text: header.badgeText || "Technology for every day" }}
+        heading={header.title || "Find the tech that fits your life"}
+        subtext={header.subtitle || "Browse dependable devices, accessories and essentials"}
       />
 
       {promos.banner_text && (
@@ -119,7 +119,7 @@ const Shops = () => {
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <label className="relative w-full max-w-md">
-                <span className="sr-only">Search fragrances</span>
+                <span className="sr-only">Search products</span>
                 <Search size={16} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-black/35" />
                 <input
                   type="search"
@@ -170,7 +170,7 @@ const Shops = () => {
 
             {!loading && (
               <p className="text-sm text-black/45" aria-live="polite">
-                {filtered.length} {filtered.length === 1 ? "fragrance" : "fragrances"}
+                {filtered.length} {filtered.length === 1 ? "product" : "products"}
               </p>
             )}
           </div>
@@ -188,8 +188,8 @@ const Shops = () => {
             </div>
           ) : filtered.length === 0 ? (
             <div className="flex flex-col items-center gap-3 rounded-2xl bg-[#f8f8f8] px-6 py-16 text-center">
-              <p className="text-base font-medium text-black">No fragrances match your search</p>
-              <p className="max-w-sm text-sm text-black/50">Try a different name, or browse the full collection.</p>
+              <p className="text-base font-medium text-black">No products match your search</p>
+              <p className="max-w-sm text-sm text-black/50">Try another name, or browse the full catalog.</p>
               {hasFilters && (
                 <button
                   type="button"

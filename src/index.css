@@ -8,14 +8,76 @@
   --font-price: "Poppins", ui-sans-serif, system-ui, sans-serif;
   --color-white: var(--zs-white, #FFFFFF);
 
-  --color-brand-50: #f5f3ff;
-  --color-brand-500: #7c3aed;
-  --color-brand-600: #6d28d9;
-  --color-brand-700: #5b21b6;
-  --radius-card: 1rem;
+  --color-brand-50: #edf7ff;
+  --color-brand-500: #087cc4;
+  --color-brand-600: #056aaa;
+  --color-brand-700: #04568c;
+  --radius-card: 1.25rem;
 }
 
-html { font-family: "Poppins", ui-sans-serif, system-ui, sans-serif; }
+html { font-family: "Poppins", ui-sans-serif, system-ui, sans-serif; background: #f5f8fc; }
+body { background: #f5f8fc; color: #14213d; }
+
+/* IT Store 2026 design language: light, technical and deliberately tactile. */
+:root {
+  --it-ink: #14213d;
+  --it-muted: #64748b;
+  --it-blue: #087cc4;
+  --it-cyan: #10b9d5;
+  --it-surface: #ffffff;
+  --it-line: #dce7f2;
+  --it-page: #f5f8fc;
+  --it-shadow: 0 14px 35px -24px rgba(24, 70, 110, .35);
+}
+.it-store-shell { background: var(--it-page); color: var(--it-ink); }
+.it-store-shell .page-section { background: transparent; }
+.it-store-shell [class*="rounded-2xl"], .it-store-shell [class*="rounded-3xl"] { border-radius: 1.25rem; }
+
+/* Storefront-wide page treatment. Existing route components inherit this
+   system so checkout, orders, support and policy pages stay functional. */
+.it-store-shell main > section[class*="bg-white"],
+.it-store-shell main > div > section[class*="bg-white"],
+.it-store-shell main > article[class*="bg-white"] { background: var(--it-page); }
+.it-store-shell input:not([type="checkbox"]):not([type="radio"]), .it-store-shell select, .it-store-shell textarea {
+  border-color: var(--it-line) !important; background-color: #fff; box-shadow: 0 1px 1px rgba(18, 56, 92, .02);
+}
+.it-store-shell input:focus, .it-store-shell select:focus, .it-store-shell textarea:focus {
+  border-color: var(--it-blue) !important; box-shadow: 0 0 0 3px rgba(8, 124, 196, .12) !important;
+}
+.it-store-shell button[class*="bg-black"], .it-store-shell a[class*="bg-black"] { background-color: var(--it-blue) !important; }
+.it-store-shell button[class*="bg-black"]:hover, .it-store-shell a[class*="bg-black"]:hover { background-color: #056aaa !important; }
+.it-store-shell [class*="bg-[#f8f8f8]"], .it-store-shell [class*="bg-[#f7f7f5]"] { background-color: #edf6fb !important; }
+.it-store-shell [class*="border-black/10"], .it-store-shell [class*="border-black/8"] { border-color: var(--it-line) !important; }
+.it-store-shell [class*="text-[#c9a96e]"], .it-store-shell [class*="bg-[#c9a96e]"] { color: var(--it-blue); }
+.it-store-shell [class*="bg-[#c9a96e]"] { background-color: var(--it-blue) !important; color: white !important; }
+
+/* Product-led electronics storefront composition, based on the researched
+   Figma commerce layout pattern rather than the prior editorial landing page. */
+.tech-home { overflow: hidden; background: #f7f8fa; color: #15233c; }
+.tech-hero { padding-top: 2.5rem; padding-bottom: 3rem; background: #f0f3f8; }
+.tech-hero-grid { display: grid; min-height: 510px; grid-template-columns: 1fr minmax(300px, .9fr) 120px; border: 1px solid #d9e0ea; background: #fff; }
+.tech-hero-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(2rem,6vw,6rem); }
+.tech-eyebrow, .tech-kicker { display: flex; align-items: center; gap: .45rem; color: #087cc4; font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.tech-kicker { margin-bottom: 1rem; color: #667085; }
+.tech-hero-copy h1 { margin: 0; font-size: clamp(3rem,6vw,6.3rem); font-weight: 650; letter-spacing: -.075em; line-height: .9; }
+.tech-hero-copy h1 em { color: #087cc4; font-family: Georgia, serif; font-weight: 400; }
+.tech-lead { max-width: 26rem; margin: 1.7rem 0 2rem; color: #59677d; font-size: 1rem; line-height: 1.7; }
+.tech-hero-actions { display: flex; align-items: center; gap: 1.5rem; }
+.tech-primary { display: inline-flex; align-items: center; gap: .6rem; width: fit-content; padding: .9rem 1.15rem; background: #15233c; color: white; font-size: .82rem; font-weight: 700; text-decoration: none; transition: .2s; }
+.tech-primary:hover { background: #087cc4; color:white; }
+.tech-text-link, .tech-section-top > a { color: #15233c; font-size: .8rem; font-weight: 700; text-decoration: none; }
+.tech-hero-product { position: relative; display: grid; place-items: center; overflow: hidden; min-height: 360px; background: linear-gradient(145deg,#9be0fb,#e3efff 60%,#b6a5f6); }
+.tech-hero-product img { position: relative; z-index: 1; width: 76%; max-height: 370px; object-fit: contain; filter: drop-shadow(0 28px 20px rgba(24,52,94,.24)); }
+.tech-orb { position: absolute; width: 75%; aspect-ratio: 1; border-radius: 100%; background: rgba(255,255,255,.38); }
+.tech-product-note { position: absolute; z-index: 2; left: 1.5rem; bottom: 1.5rem; display:flex; flex-direction:column; color: #15233c; }
+.tech-product-note span { font-size:.65rem; letter-spacing:.12em; text-transform:uppercase; }.tech-product-note strong { max-width:12rem; font-size:.9rem; }
+.tech-hero-side { display:flex; flex-direction:column; justify-content:space-between; padding:1.5rem; border-left:1px solid #d9e0ea; font-size:.68rem; letter-spacing:.1em; color:#607089; }.tech-hero-side div { flex:1; width:1px; margin:1.5rem auto; background:#d9e0ea; }.tech-hero-side p { line-height:1.6; }
+.tech-categories,.tech-products { padding-block: 5.5rem; }.tech-deals { padding-bottom:5.5rem; }
+.tech-section-top { display:flex; align-items:end; justify-content:space-between; margin-bottom:2rem; }.tech-section-top h2,.tech-editorial h2 { margin:0; font-size:clamp(2rem,4vw,3.7rem); letter-spacing:-.055em; line-height:1; }.tech-section-top > a { display:flex; gap:.4rem; align-items:center; border-bottom:1px solid #15233c; padding-bottom:.25rem; }
+.tech-category-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:#d9e0ea; border:1px solid #d9e0ea; }.tech-category { display:flex; flex-direction:column; gap:1.1rem; min-height:170px; padding:1.4rem; background:white; color:#15233c; text-decoration:none; transition:.2s; }.tech-category span { display:grid; place-items:center; width:3rem;height:3rem;background:#eef4f9;color:#087cc4;border-radius:50%;}.tech-category b{font-size:.88rem}.tech-category svg:last-child{margin-top:auto;color:#087cc4}.tech-category:hover{background:#15233c;color:white}.tech-category:hover span{background:#087cc4;color:white}
+.tech-deal-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; }.tech-deal { position:relative; min-height:310px; overflow:hidden; padding:2rem; }.tech-deal p{margin:0;color:inherit;font-size:.65rem;font-weight:700;letter-spacing:.13em}.tech-deal h2{position:relative;z-index:1;margin:1rem 0 2rem;font-size:clamp(2rem,4vw,4rem);letter-spacing:-.07em;line-height:.92}.tech-deal a{position:relative;z-index:1;display:inline-flex;gap:.5rem;align-items:center;color:inherit;font-size:.8rem;font-weight:700;text-decoration:none}.tech-deal-dark{background:#15233c;color:white}.tech-deal-light{background:#beeefd;color:#15233c}.tech-deal-icon{position:absolute;right:1rem;bottom:-1.25rem;opacity:.24;transform:rotate(-12deg)}
+.tech-product-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem; }.tech-editorial{padding-block:5.5rem;background:#e8edf6}.tech-editorial-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}.tech-editorial-copy>p:not(.tech-kicker){max-width:29rem;color:#59677d;line-height:1.7;margin:1.4rem 0 2rem}.tech-editorial-products{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.tech-editorial-products a{padding:1rem;background:white;color:#15233c;text-decoration:none;font-size:.8rem;font-weight:700}.tech-editorial-products img{display:block;width:100%;aspect-ratio:1;object-fit:contain;background:#f3f6f9;margin-bottom:1rem}.tech-trust{padding-block:2.5rem;background:#15233c;color:white}.tech-trust .page-inner{display:grid;grid-template-columns:repeat(3,1fr)}.tech-trust .page-inner>div{display:flex;justify-content:center;align-items:center;gap:.8rem;padding:1rem;border-right:1px solid rgba(255,255,255,.15)}.tech-trust .page-inner>div:last-child{border:0}.tech-trust svg{color:#60cdf0}.tech-trust span{display:flex;flex-direction:column}.tech-trust b{font-size:.82rem}.tech-trust small{margin-top:.2rem;color:#b8c6d9;font-size:.72rem}
+@media(max-width:760px){.tech-hero{padding-top:1rem}.tech-hero-grid{grid-template-columns:1fr;min-height:auto}.tech-hero-copy{padding:2.5rem 1.5rem}.tech-hero-product{min-height:310px}.tech-hero-side{display:none}.tech-categories,.tech-products,.tech-editorial{padding-block:3.5rem}.tech-category-grid{grid-template-columns:repeat(2,1fr)}.tech-category{min-height:135px}.tech-deal-grid,.tech-editorial-grid{grid-template-columns:1fr}.tech-deal{min-height:250px}.tech-product-grid{grid-template-columns:repeat(2,1fr);gap:.7rem}.tech-section-top h2{font-size:2rem}.tech-trust .page-inner{grid-template-columns:1fr}.tech-trust .page-inner>div{justify-content:flex-start;border-right:0;border-bottom:1px solid rgba(255,255,255,.15)}}
 
 /* Lenis smooth scroll (storefront only — see components/layout/SmoothScroll.jsx). */
 html.lenis,

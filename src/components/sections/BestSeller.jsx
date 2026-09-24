@@ -32,12 +32,12 @@ const BestSeller = () => {
   }
 
   return (
-    <section className="page-section bg-[#f8f8f8]">
+    <section className="page-section bg-[#eef7fc]">
       <div className="page-inner flex flex-col gap-8 sm:gap-10">
         <SectionHeader
-          badge={content.badge || "Best Seller"}
+          badge={content.badge || "Popular picks"}
           icon={<Crown size={13} />}
-          heading={content.heading || "Our signature best-selling scents"}
+          heading={content.heading || "The gear customers come back for"}
           subtext={content.subtext}
           ctaLabel={content.ctaLabel || "Shop Now"}
           ctaLink={content.ctaLink || "/shops"}

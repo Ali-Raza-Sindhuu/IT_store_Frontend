@@ -20,7 +20,7 @@ const CATEGORIES = [
     key: "marketing",
     name: "Marketing",
     locked: false,
-    description: "Used to show you more relevant ZeeScents promotions on other sites and measure the performance of our campaigns.",
+    description: "Used to show you more relevant IT Store promotions on other sites and measure the performance of our campaigns.",
   },
 ];
 
@@ -85,7 +85,7 @@ const CookieSettings = () => {
           eyebrow="Legal"
           breadcrumbs={[{ label: "Cookie settings" }]}
           title="Cookie Settings"
-          subtitle="Choose which cookies ZeeScents is allowed to use on your browser."
+          subtitle="Choose which cookies IT Store is allowed to use on your browser."
         />
 
         <div className="flex flex-col gap-4">

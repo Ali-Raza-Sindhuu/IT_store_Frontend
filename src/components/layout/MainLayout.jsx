@@ -6,7 +6,7 @@ import SmoothScroll from "./SmoothScroll";
 
 const MainLayout = () => {
   return (
-    <div>
+    <div className="it-store-shell min-h-screen">
       <SmoothScroll />
       <Navbar />
       <main className="pt-16 md:pt-20">

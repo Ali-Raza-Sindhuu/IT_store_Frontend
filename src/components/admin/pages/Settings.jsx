@@ -216,7 +216,7 @@ export const Settings = () => {
             </FormField>
           </div>
           <FormField label="Return address" htmlFor="r-address" hint="Shown to customers only after you approve their return.">
-            <TextArea id="r-address" className="min-h-[80px]" placeholder={"ZeeScents Returns\nStreet, Area\nCity, Postal code\nPhone"} value={form.returns.returnAddress} onChange={(e) => update("returns", "returnAddress", e.target.value)} />
+            <TextArea id="r-address" className="min-h-[80px]" placeholder={"IT Store Returns\nStreet, Area\nCity, Postal code\nPhone"} value={form.returns.returnAddress} onChange={(e) => update("returns", "returnAddress", e.target.value)} />
           </FormField>
           <FormField label="Packing instructions" htmlFor="r-instructions">
             <TextArea id="r-instructions" className="min-h-[70px]" value={form.returns.instructions} onChange={(e) => update("returns", "instructions", e.target.value)} />

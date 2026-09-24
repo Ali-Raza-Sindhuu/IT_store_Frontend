@@ -5,7 +5,7 @@ import PartnersSection from "../components/sections/PartnerSection";
 import { getCmsSection, useCmsReady } from "../utils/cms";
 import { resolveImg } from "../utils/resolveImg";
 
-const fallbackImage = "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=2200&q=90";
+const fallbackImage = "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=2200&q=90";
 
 const About = () => {
   const pages = useSelector((state) => state.site.pages);
@@ -14,16 +14,15 @@ const About = () => {
   const story = getCmsSection(pages, "about", "story") || {};
   const partners = getCmsSection(pages, "about", "partners") || {};
 
-  console.log()
   return (
     <div>
       <HeroSection
         mode="about"
         ready={cmsReady}
         image={cmsReady ? resolveImg(story.image) || fallbackImage : ""}
-        badge={{ label: story.badgeLabel || "About Us", text: story.badgeText || "Crafting Experiences" }}
-        heading={story.title || "Crafting Fine Fragrance"}
-        subtext={story.content || "We believe a great scent is built with thoughtful composition, quality ingredients, and attention to every detail."}
+        badge={{ label: story.badgeLabel || "About IT Store", text: story.badgeText || "Technology made simple" }}
+        heading={story.title || "Technology for the way you live"}
+        subtext={story.content || "We make it easier to find dependable devices, useful accessories and support you can count on."}
       />
       <PartnersSection
         trustText={partners.trustText}
