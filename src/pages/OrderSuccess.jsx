@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+﻿import { Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Package } from "lucide-react";
 import { formatPrice } from "../utils/price";
@@ -55,7 +55,7 @@ const OrderSuccess = () => {
           eyebrow="Confirmed"
           breadcrumbs={[{ label: "Bag", to: "/cart" }, { label: "Order confirmed" }]}
           title="Order Confirmed"
-          subtitle={`Thank you — your order has been placed successfully. A confirmation has been sent to ${
+          subtitle={`Thank you â€” your order has been placed successfully. A confirmation has been sent to ${
             order.contact?.email || "your email"
           }.`}
         />
@@ -90,7 +90,7 @@ const OrderSuccess = () => {
           <div className="flex flex-col gap-4 py-4">
             {order.items.map((item) => (
               <div
-                key={`${item.id}-${item.size ?? ""}`}
+                key={item.id}
                 className="flex items-center gap-4"
               >
                 {/* Resolved backend image */}

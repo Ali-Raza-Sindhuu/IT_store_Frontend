@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+﻿import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchOrders } from "../features/orders/ordersThunks";
@@ -16,7 +16,7 @@ import { Button } from "../components/ui/Button";
 // pending | processing | shipped | delivered | cancelled). The old version
 // of this page used invented keys ("Packed" was never a real status) that
 // never actually matched what the backend sends, so the tracker silently
-// never advanced past step one — this list is the source of truth for both
+// never advanced past step one â€” this list is the source of truth for both
 // the compact stage strip and the detailed timeline below.
 const STATUS_FLOW = [
   {
@@ -51,7 +51,7 @@ const OrderDetail = () => {
     const fromList = (state.orders?.orders || []).find((o) => String(o.id) === String(orderId));
     if (fromList) return fromList;
     // Guests (and anyone tracking an order right after checkout, before the
-    // authenticated order list has loaded) only have it in `lastOrder` —
+    // authenticated order list has loaded) only have it in `lastOrder` â€”
     // without this fallback the "Track this order" link on the confirmation
     // page landed here to a permanent "We couldn't find that order".
     const { lastOrder } = state.orders || {};
@@ -96,7 +96,7 @@ const OrderDetail = () => {
 
   // Build the detailed vertical timeline. We only attach a real timestamp to
   // "Order Placed" (the one date we actually have) and to "Delivered" when
-  // it hasn't happened yet (shown as an estimate) — every other step's exact
+  // it hasn't happened yet (shown as an estimate) â€” every other step's exact
   // time isn't tracked by the backend, so we don't invent one.
   const timelineItems = STATUS_FLOW.map((stage, i) => {
     let status = "pending";
@@ -127,7 +127,7 @@ const OrderDetail = () => {
     const ownRider = shipment.courier === "Own delivery";
     shippedStage.description = ownRider
       ? "Your order is out with our own rider, who will call you before delivery."
-      : `Handed to ${shipment.courier}${shipment.tracking_number ? ` — tracking number ${shipment.tracking_number}` : ""}.`;
+      : `Handed to ${shipment.courier}${shipment.tracking_number ? ` â€” tracking number ${shipment.tracking_number}` : ""}.`;
     if (shipment.tracking_url) {
       shippedStage.content = (
       <Button asChild size="sm" className="w-fit">
@@ -140,7 +140,7 @@ const OrderDetail = () => {
   }
 
   // The journey starts at the store: the first step shows where the order
-  // ships from, using the address set in admin → Settings → Store details.
+  // ships from, using the address set in admin â†’ Settings â†’ Store details.
   // Hidden until an address has been entered, rather than showing a fake one.
   const storeAddress = String(storeInfo?.address || "").trim();
   if (storeAddress) {
@@ -240,7 +240,7 @@ const OrderDetail = () => {
         <div className="rounded-2xl bg-[#f8f8f8] p-6">
           <div className="flex flex-col gap-4 border-b border-black/10 pb-4">
             {order.items.map((item) => (
-              <div key={`${item.id}-${item.size ?? ""}`} className="flex items-center gap-4">
+              <div key={item.id} className="flex items-center gap-4">
                 <FramedImage
                   src={resolveImg(item.image)}
                   alt={item.title}
@@ -272,7 +272,7 @@ const OrderDetail = () => {
             <div>
               <p className="text-xs uppercase tracking-[0.15em] text-black/40">Payment</p>
               <p className="mt-2 text-sm capitalize text-black">
-                {{ cod: "Cash on Delivery", jazzcash: "JazzCash", exchange: "Exchange (no charge)" }[order.payment_method || order.paymentMethod] || "—"}
+                {{ cod: "Cash on Delivery", jazzcash: "JazzCash", exchange: "Exchange (no charge)" }[order.payment_method || order.paymentMethod] || "â€”"}
               </p>
               <p className="mt-4 text-xs uppercase tracking-[0.15em] text-black/40">Total</p>
               <p className="mt-2 text-base font-semibold text-black">{formatPrice(order.total)}</p>

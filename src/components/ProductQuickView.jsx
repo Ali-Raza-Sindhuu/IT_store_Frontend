@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+﻿import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
@@ -9,8 +9,6 @@ import { getProductMedia } from "../utils/productMedia";
 import { formatPrice, getDiscountInfo } from "../utils/price";
 import { useShipping } from "../utils/shipping";
 import { isSoldOut, maxQuantity, stockOf, useProductActions } from "../hooks/useProductActions";
-import { productOptionsAreSelected } from "../utils/productOptions";
-import ProductOptions from "./products/ProductOptions";
 
 const LOW_STOCK = 5;
 const FOCUSABLE = 'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
@@ -125,14 +123,12 @@ const Gallery = ({ media, name }) => {
 const QuickViewPanel = ({ product, onClose }) => {
   const dialogRef = useRef(null);
   const [quantity, setQuantity] = useState(1);
-  const [variant, setVariant] = useState({ size: "", color: "" });
   const { addToBag, buyNow, toggleWish, isWishlisted, pending, error } = useProductActions(product);
   const shipping = useShipping(0);
 
   const soldOut = isSoldOut(product);
   const maxQty = maxQuantity(product);
   const media = getProductMedia(product);
-  const optionsReady = productOptionsAreSelected(product, variant);
 
   // Focus the dialog on open, keep Tab inside it, lock page scroll, and hand
   // focus back to whatever opened it (the eye button) on close. Callers pass
@@ -166,7 +162,7 @@ const QuickViewPanel = ({ product, onClose }) => {
   }, [onClose]);
 
   const handleAdd = async () => {
-    if (optionsReady && await addToBag(quantity, variant)) onClose();
+    if (await addToBag(quantity)) onClose();
   };
 
   return (
@@ -247,7 +243,6 @@ const QuickViewPanel = ({ product, onClose }) => {
             <StockStatus product={product} />
           </div>
 
-          <ProductOptions product={product} value={variant} onChange={setVariant} />
 
           <div className="mt-6 border-t border-black/10 pt-6">
             <p className="mb-2.5 text-sm font-medium text-black">Quantity</p>
@@ -276,20 +271,20 @@ const QuickViewPanel = ({ product, onClose }) => {
               <button
                 type="button"
                 onClick={handleAdd}
-                disabled={soldOut || Boolean(pending) || !optionsReady}
+                disabled={soldOut || Boolean(pending)}
                 className="h-12 flex-1 rounded-full border border-black bg-white text-sm font-medium text-black transition hover:bg-black hover:text-white active:scale-[0.98] disabled:cursor-not-allowed disabled:border-black/15 disabled:bg-white disabled:text-black/35"
               >
-                {soldOut ? "Sold out" : pending === "add" ? "Adding…" : "Add to bag"}
+                {soldOut ? "Sold out" : pending === "add" ? "Addingâ€¦" : "Add to bag"}
               </button>
             </div>
 
             <button
               type="button"
-              onClick={() => buyNow(quantity, variant)}
-              disabled={soldOut || Boolean(pending) || !optionsReady}
+              onClick={() => buyNow(quantity)}
+              disabled={soldOut || Boolean(pending)}
               className="mt-3 h-12 w-full rounded-full bg-black text-sm font-medium text-white transition hover:bg-black/85 active:scale-[0.98] disabled:cursor-not-allowed disabled:bg-black/20"
             >
-              {pending === "buy" ? "Taking you to checkout…" : "Buy it now"}
+              {pending === "buy" ? "Taking you to checkoutâ€¦" : "Buy it now"}
             </button>
 
             {error && <p role="alert" className="mt-3 text-sm text-red-600">{error}</p>}
@@ -325,3 +320,4 @@ export default function ProductQuickView({ product, open, onClose }) {
     document.body,
   );
 }
+

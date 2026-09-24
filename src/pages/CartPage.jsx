@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Minus, Plus, Trash2, ShoppingBag } from "lucide-react";
@@ -34,7 +34,7 @@ const CartPage = () => {
 
   const discount = appliedPromo?.discount || 0;
 
-  // Same rule the checkout and the server use (admin → Settings → Shipping).
+  // Same rule the checkout and the server use (admin â†’ Settings â†’ Shipping).
   const { cost: shipping } = useShipping(subtotal);
 
   const total = Math.max(
@@ -124,7 +124,7 @@ const CartPage = () => {
 
             {items.map((item) => (
               <div
-                key={`${item.id}-${item.size ?? ""}-${item.color ?? ""}`}
+                key={item.id}
                 className="flex gap-4 py-6 first:pt-0"
               >
                 <Link to={`/shop/${item.slug}`} className="shrink-0">
@@ -146,18 +146,6 @@ const CartPage = () => {
                       <Link to={`/shop/${item.slug}`} className="font-medium text-black hover:underline">
                         {(item.name || item.title)}
                       </Link>
-
-                      {item.size && (
-                        <p className="mt-1 text-xs text-black/50">
-                          Size: {item.size}
-                        </p>
-                      )}
-
-                      {item.color && (
-                        <p className="text-xs text-black/50">
-                          Color: {item.color}
-                        </p>
-                      )}
 
                       {item.has_discount && (
                         <p className="mt-1 flex items-center gap-1.5 text-xs tabular-nums">
@@ -270,7 +258,7 @@ const CartPage = () => {
                     disabled={promoChecking}
                     className="rounded-xl px-4"
                   >
-                    {promoChecking ? "Checking…" : "Apply"}
+                    {promoChecking ? "Checkingâ€¦" : "Apply"}
                   </Button>
 
                 </div>
@@ -368,3 +356,4 @@ const CartPage = () => {
 };
 
 export default CartPage;
+
