@@ -141,7 +141,7 @@ const navbarSolid = isWhiteNavbar || isScrolled || isMobileMenuOpen;
             />
           </Link>
 
-          <div className="hidden items-center lg:flex">
+          <div className="hidden items-center gap-1 rounded-full border border-[#087cc4]/20 bg-[#087cc4] p-1 shadow-[0_8px_24px_-14px_rgba(8,124,196,.75)] lg:flex">
             {NAV_LINKS.map((link) => {
               const isActive = isLinkActive(link, location.pathname);
               return (
@@ -149,11 +149,11 @@ const navbarSolid = isWhiteNavbar || isScrolled || isMobileMenuOpen;
                   key={link.name}
                   to={link.path}
                   aria-current={isActive ? "page" : undefined}
-                  className={`relative px-4 py-2 font-mono text-[13px] uppercase tracking-[0.06em] no-underline transition-colors duration-200 after:absolute after:bottom-1 after:left-4 after:right-4 after:h-px after:origin-left after:bg-[#c9a96e] after:transition-transform after:duration-200 after:content-[''] ${
-  isActive
-    ? "after:scale-x-100 text-[#087cc4]"
-    : "after:scale-x-0 text-[#475569] hover:text-[#087cc4] hover:after:scale-x-100"
-}`}
+                  className={`rounded-full px-4 py-2 font-medium text-[12px] uppercase tracking-[0.08em] no-underline transition-all duration-200 ${
+                    isActive
+                      ? "bg-white text-[#087cc4] shadow-sm"
+                      : "text-white/85 hover:bg-white/15 hover:text-white"
+                  }`}
                 >
                   {link.name}
                 </Link>

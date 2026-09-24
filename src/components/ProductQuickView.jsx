@@ -45,6 +45,7 @@ const Gallery = ({ media, name }) => {
   useEffect(() => {
     if (count < 2) return undefined;
     const onKey = (event) => {
+      if (event.target instanceof HTMLElement && event.target.matches("input, textarea, select, [contenteditable='true']")) return;
       if (event.key === "ArrowLeft") go(-1);
       if (event.key === "ArrowRight") go(1);
     };
@@ -202,7 +203,13 @@ const QuickViewPanel = ({ product, onClose }) => {
           <X size={18} />
         </button>
 
-        <Gallery media={media} name={product.name} />
+        {media.length ? (
+          <Gallery media={media} name={product.name} />
+        ) : (
+          <div className="grid h-[42dvh] min-h-64 shrink-0 place-items-center bg-[#ededed] text-sm text-black/45 sm:h-full sm:min-h-0">
+            Image unavailable
+          </div>
+        )}
 
         <div className="flex min-h-0 flex-1 flex-col overflow-y-auto px-5 pb-6 pt-5 sm:px-8 sm:py-9">
           {product.category_name && (
@@ -313,7 +320,7 @@ export default function ProductQuickView({ product, open, onClose }) {
 
   return createPortal(
     <AnimatePresence>
-      {open && product && <QuickViewPanel key={product.id} product={product} onClose={onClose} />}
+      {open && product && <QuickViewPanel key={product.id ?? product.slug ?? product.name} product={product} onClose={onClose} />}
     </AnimatePresence>,
     document.body,
   );
