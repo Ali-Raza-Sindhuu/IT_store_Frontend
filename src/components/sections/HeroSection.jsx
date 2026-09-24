@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import FramedImage from "../ui/FramedImage";
 import Breadcrumbs from "../ui/Breadcrumbs";
-import { Button } from "../ui/button";
+import { Button } from "../ui/Button";
 
 const PAGE_HERO_PADDING = "page-x";
 const INNER_MODES = ["contact", "about", "shop"];

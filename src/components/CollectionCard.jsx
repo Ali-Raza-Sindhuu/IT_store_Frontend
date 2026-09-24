@@ -2,9 +2,9 @@ import { useState } from "react";
 import money from "../assets/money.svg";
 import { Link } from "react-router-dom";
 import FramedImage from "./ui/FramedImage";
-import { Badge } from "./ui/badge";
-import { Button } from "./ui/button";
-import { Card } from "./ui/card";
+import { Badge } from "./ui/Badge";
+import { Button } from "./ui/Button";
+import { Card } from "./ui/Card";
 
 const CollectionCard = ({
   images,
