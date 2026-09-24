@@ -8,7 +8,7 @@ const FAQ_SECTIONS = [
     items: [
       {
         q: "How do I place an order?",
-        a: "Browse the shop, open a fragrance (or use the quick view) and add it to your bag. When you're ready, open your bag and proceed to checkout. You don't need an account to order.",
+        a: "Browse the catalog, open a product and add it to your cart. When you're ready, proceed to checkout. You don't need an account to order.",
       },
       {
         q: "Can I change or cancel my order after placing it?",
@@ -42,7 +42,7 @@ const FAQ_SECTIONS = [
     items: [
       {
         q: "What is your return policy?",
-        a: "Unopened, sealed fragrances can be returned or exchanged for any reason within 30 days of delivery. Damaged, leaking or wrong items are always covered — just add a photo when you start the return.",
+        a: "Unused products in their original packaging can be returned or exchanged within 30 days of delivery. Damaged, faulty or incorrect items are always covered — just add a photo when you start the return.",
       },
       {
         q: "How do I start a return?",
@@ -55,11 +55,11 @@ const FAQ_SECTIONS = [
     ],
   },
   {
-    category: "Fragrances",
+    category: "Products",
     items: [
       {
-        q: "How do I choose a fragrance?",
-        a: "Each fragrance page lists its description and notes. If you're unsure, get in touch through the Contact page and we'll help you find a scent that suits you.",
+        q: "How do I choose the right product?",
+        a: "Each product page lists its key features and specifications. If you are unsure, contact us and our team will help you find the right device or accessory.",
       },
     ],
   },
@@ -101,7 +101,7 @@ const FAQ = () => {
           eyebrow="Support"
           breadcrumbs={[{ label: "FAQ" }]}
           title="Frequently Asked Questions"
-          subtitle="Everything you need to know about ordering, delivery, returns, and choosing a scent."
+          subtitle="Everything you need to know about ordering, delivery, returns, and choosing the right technology."
         />
 
         <div className="flex flex-col gap-10">
