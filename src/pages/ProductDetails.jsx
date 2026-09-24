@@ -24,7 +24,7 @@ import ProductVideo from "../components/ui/ProductVideo";
 import { getProductMedia } from "../utils/productMedia";
 import { fetchProductReviewsRequest, submitReviewRequest } from "../api/reviewsApi";
 import { Button } from "../components/ui/button";
-import { Badge } from "../components/ui/badge";
+import { Badge } from "../components/ui/Badge";
 
 // Real per-star breakdown, computed from the actual reviews for this
 // product rather than a fabricated distribution.

@@ -6,7 +6,7 @@ import { formatPrice, getDiscountInfo } from "../utils/price";
 import { isSoldOut, useProductActions } from "../hooks/useProductActions";
 import ProductQuickView from "./ProductQuickView";
 import FramedImage from "./ui/FramedImage";
-import { Badge } from "./ui/badge";
+import { Badge } from "./ui/Badge";
 
 // Round action buttons on the card image. Always visible on touch screens;
 // revealed on hover/focus where a fine pointer exists.
