@@ -19,6 +19,12 @@ const SampleProduct = (product) => {
   const close = useCallback(() => setOpen(false), []);
   const { toggleWish, isWishlisted } = useProductActions(product);
 
+  const handleQuickView = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setOpen(true);
+  };
+
   const name = product.name || product.title;
   const images = (product.images?.length ? product.images : [product.image_url]).map(resolveImg).filter(Boolean);
   const [cover, hoverImage] = images;
@@ -70,7 +76,7 @@ const SampleProduct = (product) => {
           </button>
           <button
             type="button"
-            onClick={() => setOpen(true)}
+            onClick={handleQuickView}
             aria-label={`Quick view ${name}`}
             className={`${actionClass} pointer-fine:delay-75`}
           >

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ChevronLeft, ChevronRight, Heart, Minus, Plus, X } from "lucide-react";
@@ -8,6 +9,8 @@ import { getProductMedia } from "../utils/productMedia";
 import { formatPrice, getDiscountInfo } from "../utils/price";
 import { useShipping } from "../utils/shipping";
 import { isSoldOut, maxQuantity, stockOf, useProductActions } from "../hooks/useProductActions";
+import { productOptionsAreSelected } from "../utils/productOptions";
+import ProductOptions from "./products/ProductOptions";
 
 const LOW_STOCK = 5;
 const FOCUSABLE = 'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
@@ -121,12 +124,14 @@ const Gallery = ({ media, name }) => {
 const QuickViewPanel = ({ product, onClose }) => {
   const dialogRef = useRef(null);
   const [quantity, setQuantity] = useState(1);
+  const [variant, setVariant] = useState({ size: "", color: "" });
   const { addToBag, buyNow, toggleWish, isWishlisted, pending, error } = useProductActions(product);
   const shipping = useShipping(0);
 
   const soldOut = isSoldOut(product);
   const maxQty = maxQuantity(product);
   const media = getProductMedia(product);
+  const optionsReady = productOptionsAreSelected(product, variant);
 
   // Focus the dialog on open, keep Tab inside it, lock page scroll, and hand
   // focus back to whatever opened it (the eye button) on close. Callers pass
@@ -160,7 +165,7 @@ const QuickViewPanel = ({ product, onClose }) => {
   }, [onClose]);
 
   const handleAdd = async () => {
-    if (await addToBag(quantity)) onClose();
+    if (optionsReady && await addToBag(quantity, variant)) onClose();
   };
 
   return (
@@ -170,7 +175,9 @@ const QuickViewPanel = ({ product, onClose }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2 }}
-      onMouseDown={onClose}
+      onMouseDown={(event) => {
+        if (event.target === event.currentTarget) onClose();
+      }}
     >
       <motion.div
         ref={dialogRef}
@@ -183,6 +190,7 @@ const QuickViewPanel = ({ product, onClose }) => {
         exit={{ opacity: 0, y: 32, scale: 0.98 }}
         transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
         onMouseDown={(event) => event.stopPropagation()}
+        onClick={(event) => event.stopPropagation()}
         className="relative flex max-h-[92dvh] w-full max-w-5xl flex-col overflow-hidden rounded-t-3xl bg-white shadow-2xl outline-none sm:grid sm:h-[min(88dvh,620px)] sm:grid-cols-[1.1fr_1fr] sm:rounded-3xl"
       >
         <button
@@ -232,6 +240,8 @@ const QuickViewPanel = ({ product, onClose }) => {
             <StockStatus product={product} />
           </div>
 
+          <ProductOptions product={product} value={variant} onChange={setVariant} />
+
           <div className="mt-6 border-t border-black/10 pt-6">
             <p className="mb-2.5 text-sm font-medium text-black">Quantity</p>
             <div className="flex gap-3">
@@ -259,7 +269,7 @@ const QuickViewPanel = ({ product, onClose }) => {
               <button
                 type="button"
                 onClick={handleAdd}
-                disabled={soldOut || Boolean(pending)}
+                disabled={soldOut || Boolean(pending) || !optionsReady}
                 className="h-12 flex-1 rounded-full border border-black bg-white text-sm font-medium text-black transition hover:bg-black hover:text-white active:scale-[0.98] disabled:cursor-not-allowed disabled:border-black/15 disabled:bg-white disabled:text-black/35"
               >
                 {soldOut ? "Sold out" : pending === "add" ? "Adding…" : "Add to bag"}
@@ -268,8 +278,8 @@ const QuickViewPanel = ({ product, onClose }) => {
 
             <button
               type="button"
-              onClick={() => buyNow(quantity)}
-              disabled={soldOut || Boolean(pending)}
+              onClick={() => buyNow(quantity, variant)}
+              disabled={soldOut || Boolean(pending) || !optionsReady}
               className="mt-3 h-12 w-full rounded-full bg-black text-sm font-medium text-white transition hover:bg-black/85 active:scale-[0.98] disabled:cursor-not-allowed disabled:bg-black/20"
             >
               {pending === "buy" ? "Taking you to checkout…" : "Buy it now"}
@@ -299,9 +309,12 @@ const QuickViewPanel = ({ product, onClose }) => {
 };
 
 export default function ProductQuickView({ product, open, onClose }) {
-  return (
+  if (typeof document === "undefined") return null;
+
+  return createPortal(
     <AnimatePresence>
       {open && product && <QuickViewPanel key={product.id} product={product} onClose={onClose} />}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body,
   );
 }
