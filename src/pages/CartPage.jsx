@@ -12,7 +12,7 @@ import { useShipping } from "../utils/shipping";
 import PageHeader from "../components/layout/PageHeader";
 import FreeShippingBar from "../components/cart/FreeShippingBar";
 import FramedImage from "../components/ui/FramedImage";
-import { Button } from "../components/ui/Buttonutton";
+import { Button } from "../components/ui/Button";
 import { Input } from "../components/ui/Input";
 import { Card } from "../components/ui/Card";
 

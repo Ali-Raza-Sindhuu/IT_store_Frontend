@@ -23,7 +23,7 @@ import Breadcrumbs from "../components/ui/Breadcrumbs";
 import ProductVideo from "../components/ui/ProductVideo";
 import { getProductMedia } from "../utils/productMedia";
 import { fetchProductReviewsRequest, submitReviewRequest } from "../api/reviewsApi";
-import { Button } from "../components/ui/button";
+import { Button } from "../components/ui/Button";
 import { Badge } from "../components/ui/Badge";
 
 // Real per-star breakdown, computed from the actual reviews for this

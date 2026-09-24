@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { openLogin, setLoginPreFill } from "../../store/slice/Uislice";
 import {
@@ -9,7 +9,6 @@ import {
 } from "../Icons/SocialIcons";
 import { signupUser } from "../../features/auth/authThunks";
 import { apiBaseUrl } from "../../api/apiClient";
-import { requestSignupVerification } from "../../api/authApi";
 
 export const SocialButton = ({ icon: Icon, label, onClick }) => (
   <button
@@ -36,10 +35,6 @@ const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [error, setError] = useState("");
-  const [verificationRequested, setVerificationRequested] = useState(false);
-  const [otp, setOtp] = useState(Array(6).fill(""));
-  const [sendingCode, setSendingCode] = useState(false);
-  const otpInputs = useRef([]);
   const startGoogleLogin = () => {
     window.location.assign(`${apiBaseUrl}/auth/google`);
   };
@@ -64,52 +59,12 @@ const SignUp = () => {
     }
 
     setError("");
-    setSendingCode(true);
-    try {
-      await requestSignupVerification({
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        email: formData.email,
-        password: formData.password,
-      });
-      setVerificationRequested(true);
-      setOtp(Array(6).fill(""));
-      setTimeout(() => otpInputs.current[0]?.focus(), 0);
-    } catch (requestError) {
-      setError(requestError.response?.data?.message || "We couldn't send a verification code. Please try again.");
-    } finally {
-      setSendingCode(false);
-    }
-  };
-
-  const handleOtpChange = (index, value) => {
-    const digits = value.replace(/\D/g, "");
-    if (!digits) {
-      setOtp((current) => current.map((digit, i) => (i === index ? "" : digit)));
-      return;
-    }
-    const next = [...otp];
-    digits.slice(0, 6 - index).split("").forEach((digit, offset) => { next[index + offset] = digit; });
-    setOtp(next);
-    const focusIndex = Math.min(index + digits.length, 5);
-    setTimeout(() => otpInputs.current[focusIndex]?.focus(), 0);
-  };
-
-  const handleOtpKeyDown = (index, event) => {
-    if (event.key === "Backspace" && !otp[index] && index > 0) {
-      otpInputs.current[index - 1]?.focus();
-    }
-  };
-
-  const handleVerify = async (e) => {
-    e.preventDefault();
-    const code = otp.join("");
-    if (code.length !== 6) {
-      setError("Enter the 6-digit verification code.");
-      return;
-    }
-    setError("");
-    const resultAction = await dispatch(signupUser({ email: formData.email, code }));
+    const resultAction = await dispatch(signupUser({
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      password: formData.password,
+    }));
 
 if (signupUser.fulfilled.match(resultAction)) {
   // console.log("Signup Successful");
@@ -134,64 +89,18 @@ if (signupUser.fulfilled.match(resultAction)) {
 }
   };
 
-  const resendCode = async () => {
-    setError("");
-    setSendingCode(true);
-    try {
-      await requestSignupVerification({ firstName: formData.firstName, lastName: formData.lastName, email: formData.email, password: formData.password });
-      setOtp(Array(6).fill(""));
-      setTimeout(() => otpInputs.current[0]?.focus(), 0);
-    } catch (requestError) {
-      setError(requestError.response?.data?.message || "We couldn't resend the code. Please try again.");
-    } finally {
-      setSendingCode(false);
-    }
-  };
-
   return (
     <div className="flex max-h-screen flex-col overflow-y-auto py-1">
       <div className="mb-4 text-center">
         <h2 className="text-xl font-semibold text-gray-900">
-          {verificationRequested ? "Verify your email" : "Create your account"}
+          Create your account
         </h2>
         <p className="mt-0.5 text-xs text-gray-500">
-          {verificationRequested ? `We sent a 6-digit code to ${formData.email}` : "Start your journey with us"}
+          Start your journey with us
         </p>
       </div>
 
-      {verificationRequested ? (
-        <form className="space-y-4" onSubmit={handleVerify}>
-          <div>
-            <label className="mb-2 block text-xs font-medium text-gray-700">Verification code</label>
-            <div className="flex items-center justify-between gap-1.5" aria-label="6-digit verification code">
-              {otp.map((digit, index) => (
-                <input
-                  key={index}
-                  ref={(element) => { otpInputs.current[index] = element; }}
-                  inputMode="numeric"
-                  autoComplete={index === 0 ? "one-time-code" : "off"}
-                  maxLength={6}
-                  value={digit}
-                  onChange={(event) => handleOtpChange(index, event.target.value)}
-                  onKeyDown={(event) => handleOtpKeyDown(index, event)}
-                  className="h-11 w-10 rounded-lg border border-gray-200 bg-gray-50 text-center text-lg font-semibold text-gray-900 outline-none transition focus:border-gray-900 focus:bg-white focus:ring-1 focus:ring-gray-900 sm:w-11"
-                  aria-label={`Digit ${index + 1}`}
-                />
-              ))}
-            </div>
-            <p className="mt-2 text-xs text-gray-500">Enter the code from your email. It expires in 10 minutes.</p>
-          </div>
-          {error && <p className="text-xs font-medium text-red-500">{error}</p>}
-          {apiError && <p className="text-xs font-medium text-red-500">{apiError}</p>}
-          <button type="submit" disabled={loading} className={`w-full rounded-xl py-2.5 text-sm font-medium text-white transition ${loading ? "cursor-not-allowed bg-gray-500" : "bg-gray-900 hover:bg-gray-800"}`}>
-            {loading ? "Verifying..." : "Verify & create account"}
-          </button>
-          <div className="flex items-center justify-between text-xs">
-            <button type="button" onClick={() => { setVerificationRequested(false); setError(""); }} className="font-medium text-gray-600 hover:text-gray-900 hover:underline">Edit details</button>
-            <button type="button" onClick={resendCode} disabled={sendingCode} className="font-medium text-gray-900 hover:underline disabled:text-gray-400">{sendingCode ? "Sending..." : "Resend code"}</button>
-          </div>
-        </form>
-      ) : (<>
+      <>
       <form className="space-y-3" onSubmit={handleSubmit}>
         <div className="flex gap-2">
           <div className="flex-1">
@@ -330,15 +239,15 @@ if (signupUser.fulfilled.match(resultAction)) {
 
         <button
   type="submit"
-  disabled={sendingCode}
+  disabled={loading}
   className={`w-full rounded-xl py-2.5 text-sm font-medium text-white transition
   ${
-    sendingCode
+    loading
       ? "cursor-not-allowed bg-gray-500"
       : "bg-gray-900 hover:bg-gray-800"
   }`}
 >
-  {sendingCode ? "Sending code..." : "Send verification code"}
+  {loading ? "Creating account..." : "Create account"}
 </button>
       </form>
 
@@ -363,7 +272,7 @@ if (signupUser.fulfilled.match(resultAction)) {
           Log in
         </button>
       </p>
-      </>) }
+      </>
     </div>
   );
 };
