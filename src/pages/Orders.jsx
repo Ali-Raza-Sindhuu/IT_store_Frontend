@@ -7,9 +7,9 @@ import { formatPrice } from "../utils/price";
 import PageHeader from "../components/layout/PageHeader";
 import FramedImage from "../components/ui/FramedImage";
 import { resolveImg } from "../utils/resolveImg";
-import { Badge } from "../components/ui/badge";
-import { Button } from "../components/ui/button";
-import { Card } from "../components/ui/card";
+import { Badge } from "../components/ui/Badge";
+import { Button } from "../components/ui/Button";
+import { Card } from "../components/ui/Card";
 
 const STATUS_STYLES = {
   Pending: "bg-amber-50 text-amber-700",

@@ -10,7 +10,7 @@ import { LocationMap } from "../components/ui/expand-map";
 import PageHeader from "../components/layout/PageHeader";
 import { resolveImg } from "../utils/resolveImg";
 import FramedImage from "../components/ui/FramedImage";
-import { Button } from "../components/ui/button";
+import { Button } from "../components/ui/Button";
 
 // Matches the backend's real order status enum (see 002_orders_payments.sql:
 // pending | processing | shipped | delivered | cancelled). The old version
